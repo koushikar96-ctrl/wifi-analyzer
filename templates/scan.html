@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WiFi Scan Results</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url("{{ url_for('static', filename='bg2.jpeg') }}") no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    }
+
+    table {
+      width: 80%;
+      max-width: 700px;
+      border-collapse: collapse;
+      margin: 0 auto 20px auto;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+    }
+
+    th {
+      background: rgba(30,144,255,0.8);
+      font-size: 1.1rem;
+    }
+
+    tr:hover {
+      background: rgba(30,144,255,0.3);
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-top: 20px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+      color: #00ff7f; /* green for best network */
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #ff6347; /* red for error */
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 30px;
+      text-decoration: none;
+      color: #1e90ff;
+      font-weight: bold;
+      background: rgba(0,0,0,0.6);
+      padding: 10px 25px;
+      border-radius: 25px;
+      transition: 0.3s ease;
+    }
+
+    a:hover {
+      background: rgba(30,144,255,0.8);
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 700px) {
+      table {
+        width: 100%;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      th, td {
+        padding: 10px;
+        font-size: 0.9rem;
+      }
+      h3 {
+        font-size: 1.2rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+      a {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>Available WiFi Networks</h2>
+
+  {% if wifi_list %}
+  <table>
+<tr>
+  <th>SSID</th>
+  <th>Signal Strength (dBm)</th>
+  <th>Factor</th>
+  <th>Distance (m)</th>
+</tr>
+{% for wifi in wifi_list %}
+<tr>
+  <td>{{ wifi.ssid }}</td>
+  <td>{{ wifi.signal }}</td>
+  <td>{{ wifi.factor }}</td>
+  <td>{{ "%.2f"|format(wifi.distance_m) }}</td>
+</tr>
+{% endfor %}
+</table>
+
+  <h3>Best Network: {{ best }}</h3>
+  {% else %}
+  <p>No WiFi networks found. Please check your WiFi adapter.</p>
+  {% endif %}
+
+  <a href="/dashboard">⬅ Back</a>
+</body>
+</html>

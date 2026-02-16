@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wi-Fi Signal Analyzer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="home-body">
+  <div class="overlay">
+    <div class="container">
+      <h1 class="title">📶 Wi-Fi Signal Analyzer</h1>
+      <p class="subtitle">Scan, Analyze & Visualize your Wi-Fi Networks</p>
+
+      <div class="auth-buttons">
+        <button onclick="window.location.href='/login'">Login</button>
+        <button onclick="window.location.href='/signup'">Signup</button>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    body.home-body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url("{{ url_for('static', filename='bg.jpeg') }}") no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+    }
+
+    .overlay {
+      background: rgba(0, 0, 0, 0.5);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      text-align: center;
+      color: white;
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.7);
+      max-width: 500px;
+      width: 90%;
+    }
+
+    .title {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .auth-buttons button {
+      padding: 15px 30px;
+      margin: 10px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .auth-buttons button:first-child {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .auth-buttons button:first-child:hover {
+      background: #45a049;
+    }
+
+    .auth-buttons button:last-child {
+      background: #2196F3;
+      color: white;
+    }
+
+    .auth-buttons button:last-child:hover {
+      background: #1976D2;
+    }
+  </style>
+</body>
+</html>

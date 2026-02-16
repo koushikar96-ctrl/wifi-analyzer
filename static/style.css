@@ -1,0 +1,58 @@
+body.home-body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url("{{ url_for('static', filename='bg.jpeg') }}") no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  text-align: center;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.7);
+  max-width: 400px;
+  width: 90%;
+}
+
+/* Buttons */
+.auth-buttons button {
+  padding: 15px 30px;
+  margin: 10px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.auth-buttons button:first-child {
+  background: #4CAF50;
+  color: white;
+}
+
+.auth-buttons button:first-child:hover {
+  background: #45a049;
+}
+
+.auth-buttons button:last-child {
+  background: #2196F3;
+  color: white;
+}
+
+.auth-buttons button:last-child:hover {
+  background: #1976D2;
+}
